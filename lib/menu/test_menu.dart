@@ -50,7 +50,7 @@ class TestMenu extends Menu {
   Future<String> comparison() async{
     int t = 0;
 
-    Directory directory = Directory(Directory.current.path + "/assets/files");
+    Directory directory = Directory(Directory.current.path + "\\assets\\files");
     list2 = List.generate(directory.listSync().length, (index) {
       return directory.listSync()[index].path.split("/").last.split("\\").last;
     });
@@ -62,47 +62,30 @@ class TestMenu extends Menu {
 
     List l = [];
 
+
     for (int i = 0; i < list2.length; i++) {
+      // print(list2);
       l.addAll(list2);
       l.remove(list2[i]);
-      Set<String> set = {};
 
-      set.add(l[Random().nextInt(l.length)]);
-      set.add(l[Random().nextInt(l.length)]);
-      set.add(l[Random().nextInt(l.length)]);
+      int index = Random().nextInt(l.length);
 
-      if (set.length == 3) {
-        do {
-          if (set.length == 3) {
-            ig = false;
-          } else {
-            set.add(l[Random().nextInt(l.length)]);
-          }
-        } while (ig);
 
-        catcher1 = set.elementAt(0);
-        catcher2 = set.elementAt(1);
-        catcher3 = set.elementAt(2);
-      } else if (set.length < 3) {
-        do {
-          if (set.length == 2) {
-            ig = false;
-          } else {
-            set.add(l[Random().nextInt(l.length)]);
-          }
-        } while (ig);
-        catcher1 = set.elementAt(0);
-        catcher2 = set.elementAt(1);
-      }
+        catcher1 = l[index%l.length];
+        catcher2 = l[(index+1)%l.length];
+        catcher3 = l[(index+2)%l.length];
+
       String translation = '';
       String translation1 = '';
       String translation2 = '';
       String translation3 = '';
 
-      translation = jsonDecode(File(directory.path + "/${list2[i]}").readAsStringSync())["translation"];
-      translation1 = jsonDecode(File(directory.path + "/$catcher1").readAsStringSync())["translation"];
-      translation2 = jsonDecode(File(directory.path + "/$catcher2").readAsStringSync())["translation"];
-      translation3 = jsonDecode(File(directory.path + "/$catcher3").readAsStringSync())["translation"];
+
+
+      translation = jsonDecode(File(directory.path + "\\${list2[i]}").readAsStringSync())["translation"];
+      translation1 = jsonDecode(File(directory.path + "\\$catcher1").readAsStringSync())["translation"];
+      translation2 = jsonDecode(File(directory.path + "\\$catcher2").readAsStringSync())["translation"];
+      translation3 = jsonDecode(File(directory.path + "\\$catcher3").readAsStringSync())["translation"];
 
       List ranList = [translation, translation3, translation2, translation1];
 
@@ -116,16 +99,24 @@ class TestMenu extends Menu {
 
       String finder = read();
 
-      List listVersion = ["a", "b", "c", "d"];
-
-      if (listVersion.indexOf(finder) == ranList.indexOf(translation)) {
-        print('\t\tCorrect ✅');
-        t++;
-      } else {
+      if(finder != 'a' && finder != 'b' && finder != 'c' && finder != 'd'){
         print('\t\tWRONG ❌');
       }
 
-      l = [];
+      List listVersion = ["a", "b", "c", "d"];
+
+      if(listVersion.contains(finder)){
+        if (listVersion.indexOf(finder) == ranList.indexOf(translation)) {
+          print('\t\tCorrect ✅');
+          t++;
+        } else {
+          print('\t\tWRONG ❌');
+        }
+
+        l = [];
+      }
+
+
     }
 
     print("\n\t\t\t" + "correct_answers".tr + " =>" + " $t");

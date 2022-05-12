@@ -46,7 +46,7 @@ class SettingLanguage extends Menu {
 
 
 
-    Navigator.popUntil();
+    await Navigator.popUntil();
 
   }
 

@@ -6,7 +6,7 @@ const uzUZ = {
   'exit': "Dasturdan chiqish.",
   'error': "Xato buyruq kiritildi",
   'new_word_name': "So'zni ingliz tilida kiriting: ",
-  'file_error': "Kiritilgan note nomi oldin yaratilgan, Iltimos qayta urunib ko'ring.",
+  'file_error': "Kiritilgan so'z oldin yaratilgan, Iltimos qayta urunib ko'ring.",
   'write_word': "Tarjimasini kiriting: ",
   'save': 'save',
   'word_save': "So'z muvaffaqiyatli saqlandi!",

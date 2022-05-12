@@ -44,6 +44,7 @@ class HomeMenu extends Menu{
       case "V": exit(0);
       default: {
         writeln("error".tr);
+        await Navigator.popUntil();
       }
     }
   }

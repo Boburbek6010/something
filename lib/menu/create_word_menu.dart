@@ -63,7 +63,7 @@ class CreateWordMenu extends Menu {
     await fileService.writeFile(word, path);
     font2("word_save".tr);
     write("\n\n\n");
-    await Navigator.pop();
+    await Navigator.popUntil();
   }
 
   @override

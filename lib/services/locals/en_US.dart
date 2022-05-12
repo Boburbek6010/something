@@ -6,7 +6,7 @@ const enUS = {
   'exit': "Exit the program.",
   'error': "Error command entered",
   'new_word_name': "Enter a name for the new word: ",
-  'file_error': "The note name entered was previously created, please try again.",
+  'file_error': "The word entered was created earlier, please try again.",
   'write_word': "Enter translation:",
   'save': 'save',
   'word_save': "Word successfully saved!",

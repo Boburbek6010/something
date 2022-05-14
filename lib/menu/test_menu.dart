@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'package:learn_english_word_by_word/menu/home_menu.dart';
 import 'package:learn_english_word_by_word/models/menu_model.dart';
 import 'package:learn_english_word_by_word/services/ext_service.dart';
 import 'package:learn_english_word_by_word/services/io_service.dart';
@@ -37,16 +36,19 @@ class TestMenu extends Menu {
         print('\t\t\t'+'return_main'.tr+'\n');
         String finder = read();
 
-        if(finder == 'exit'){
-          return '';
-        }
-
         if (finder == letter) {
           print('\t\tCorrect ✅');
           t++;
         } else {
           print('\t\tWRONG ❌');
         }
+
+        if(finder == 'exit'){
+          print("\n\t\t\t" + "correct_answers".tr + " =>" + " ${n+1} :"+" $t");
+          print('\t\t\t' + 'percent'.tr + ' => ' + ((t * 100) / (n+1)).toStringAsFixed(2) + '%' + '\n\n\n');
+          return '';
+        }
+
         n++;
       }
     }
@@ -69,7 +71,7 @@ class TestMenu extends Menu {
 
     List l = [];
 
-
+    int n = 0;
     for (int i = 0; i < list2.length; i++) {
       // print(list2);
       l.addAll(list2);
@@ -107,33 +109,28 @@ class TestMenu extends Menu {
 
       String finder = read();
 
-      if(finder == "exit"){
-        return "";
-      }
-
-      if(finder != 'a' && finder != 'b' && finder != 'c' && finder != 'd'){
-        print('\t\tWRONG ❌');
-      }
-
       List listVersion = ["a", "b", "c", "d"];
 
-      if(listVersion.contains(finder)){
         if (listVersion.indexOf(finder) == ranList.indexOf(translation)) {
           print('\t\tCorrect ✅');
           t++;
-        } else {
+        } else if(finder == "exit"){
+          print("\n\t\t\t" + "correct_answers".tr + " => " + "$n : "+"$t");
+          print('\t\t\t' + 'percent'.tr + ' => ' + ((t * 100) / n).toStringAsFixed(2) + ' %' + '\n\n\n');
+          return "$t";
+        }else if(finder != 'a' && finder != 'b' && finder != 'c' && finder != 'd'){
+          print('\t\tWRONG ❌');
+        }else{
           print('\t\tWRONG ❌');
         }
+      n++;
 
         l = [];
-      }
-
 
     }
 
     print("\n\t\t\t" + "correct_answers".tr + " =>" + " $t");
-    print('\t\t\t' + 'percent'.tr + ' => ' +
-        ((t * 100) / list2.length).toStringAsFixed(2) + ' %' + '\n\n\n');
+    print('\t\t\t' + 'percent'.tr + ' => ' + ((t * 100) / list2.length).toStringAsFixed(2) + ' %' + '\n\n\n');
     return '$t';
   }
 
@@ -156,7 +153,6 @@ class TestMenu extends Menu {
           write("\n\n\n");
          return ;
         }
-        break;
     }
   }
 

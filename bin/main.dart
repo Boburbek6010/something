@@ -15,7 +15,7 @@ void main() async {
   // // print(TestMenu().adding());
   // TestMenu testMenu = TestMenu();
   // testMenu.comparison();
-  font("welcome".tr);
+  font("\t\t\t\t\t\t"+"welcome".tr+"\t\t\t\t\t\t");
 
   MyApp(
     home: HomeMenu(),

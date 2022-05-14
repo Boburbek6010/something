@@ -52,11 +52,12 @@ class HomeMenu extends Menu{
   @override
   Future<void> build() async {
 
-    font1("I. " + "create_word".tr);
-    font1("II. " + "view_all_words".tr);
-    font1("III. " + "test".tr);
-    font1("IV. " + "settings".tr);
-    font1("V. " + "exit".tr);
+    print('\n');
+    font1("\t\t\t""I. " + "create_word".tr+"\t\t\t");
+    font1("\t\t\t""II. " + "view_all_words".tr+"\t\t\t\t");
+    font1("\t\t\t""III. " + "test".tr+"\t\t\t\t\t\t");
+    font1("\t\t\t""IV. " + "settings".tr+"\t\t\t");
+    font1("\t\t\t""V. " + "exit".tr+"\t\t\t");
     String selectedMenu = read();
     await selectFunction(selectedMenu);
   }

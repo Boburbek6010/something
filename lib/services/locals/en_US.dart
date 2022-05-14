@@ -37,4 +37,6 @@ const enUS = {
   "which_letter": "Which letter was omitted?",
   "second_game": "Find the translation of the word",
   'not_found': "Object is not found",
+  "return_main":"Type «exit» to end the test",
+  "length_word_error":"Length of the word shouldn't be less then 2",
 };

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+import 'package:learn_english_word_by_word/menu/home_menu.dart';
 import 'package:learn_english_word_by_word/models/menu_model.dart';
 import 'package:learn_english_word_by_word/services/ext_service.dart';
 import 'package:learn_english_word_by_word/services/io_service.dart';
@@ -12,6 +13,8 @@ List<String> listTrans = [];
 String str = '';
 
 class TestMenu extends Menu {
+
+
   static const String id = "/missing_word_test";
 
 
@@ -31,7 +34,13 @@ class TestMenu extends Menu {
         print('\n\n${n + 1}' '.'+ "which_letter".tr);
         str = str.replaceRange(2, 3, '..');
         print(str);
+        print('\t\t\t'+'return_main'.tr+'\n');
         String finder = read();
+
+        if(finder == 'exit'){
+          return '';
+        }
+
         if (finder == letter) {
           print('\t\tCorrect ✅');
           t++;
@@ -57,8 +66,6 @@ class TestMenu extends Menu {
     String catcher1 = '';
     String catcher2 = '';
     String catcher3 = '';
-
-    bool ig = true;
 
     List l = [];
 
@@ -96,8 +103,13 @@ class TestMenu extends Menu {
           '${list2[i]}'
           '\n\t\t\t\t\t\t c) ${ranList[2]}\n'
           '\n\t\t\t\t\t\t d) ${ranList[3]}\n');
+      print('\t\t\t'+'return_main'.tr+'\n');
 
       String finder = read();
+
+      if(finder == "exit"){
+        return "";
+      }
 
       if(finder != 'a' && finder != 'b' && finder != 'c' && finder != 'd'){
         print('\t\tWRONG ❌');
@@ -131,20 +143,18 @@ class TestMenu extends Menu {
         {
           write("\n\n\n");
           await missingLetter();
-          await Navigator.popUntil();
         }
         break;
       case "II":
         {
           write("\n\n\n");
           await comparison();
-          await Navigator.popUntil();
         }
         break;
       case "III":
         {
           write("\n\n\n");
-          await Navigator.popUntil();
+         return ;
         }
         break;
     }
@@ -158,6 +168,9 @@ class TestMenu extends Menu {
     writeln("II. " + "second_game".tr);
     writeln("III. " + "back_to_home".tr);
     String selectedMenu = read();
-    selectFunction(selectedMenu);
+   await selectFunction(selectedMenu);
+   await Navigator.pop();
   }
 }
+
+

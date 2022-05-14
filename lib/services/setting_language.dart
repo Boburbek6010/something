@@ -13,27 +13,33 @@ import 'io_service.dart';
 
 class SettingLanguage extends Menu {
 
-
-
   Future<void>settingLang(String selectedMenu) async {
+
+    DataService dataService = DataService();
 
     switch (selectedMenu) {
       case "I":
         {
           write("\n\n\n");
           LangService.language = Language.uz;
+          await dataService.init();
+          await dataService.storeData(key: "language", value: LangService.language.name);
         }
         break;
       case "II":
         {
           write("\n\n\n");
           LangService.language = Language.en;
+          await dataService.init();
+          await dataService.storeData(key: "language", value: LangService.language.name);
         }
         break;
       case "III":
         {
           write("\n\n\n");
           LangService.language = Language.ru;
+          await dataService.init();
+          await dataService.storeData(key: "language", value: LangService.language.name);
         }
         break;
 
@@ -41,7 +47,7 @@ class SettingLanguage extends Menu {
         {
           writeln("error".tr);
         }
-
+        break;
     }
 
 
@@ -60,7 +66,6 @@ class SettingLanguage extends Menu {
       font2("III. " "RU");
       String selectedMenu = read();
       await settingLang(selectedMenu);
-    await dataService.storeData(key: "language", value: LangService.language.name);
 
   }
 }

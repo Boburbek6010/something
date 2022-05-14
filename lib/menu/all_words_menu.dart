@@ -23,10 +23,10 @@ class AllWordsMenu extends Menu {
         font2("${i + 1}. ${files[i].path.substring(files[0].path.lastIndexOf("\\") + 1)}");
       }
 
-      font("I. " + "number_word".tr);
-      font("II. " + "delete_all".tr);
-      font("III. " + "delete_selected".tr);
-      font("IV. " + "back_to_home".tr);
+      font1("I. " + "number_word".tr);
+      font1("II. " + "delete_all".tr);
+      font1("III. " + "delete_selected".tr);
+      font1("IV. " + "back_to_home".tr);
       String selectedMenu = read();
       await selectFunctionIf(selectedMenu, files);
     } else {

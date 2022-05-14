@@ -37,4 +37,6 @@ const uzUZ = {
   "which_letter": "Qaysi harf kiritilishi kerak?",
   "second_game": "So'zning tarjimasini topish",
   'not_found': "Ob'ekt topilmadi",
+  "return_main":"Testni yakunlash uchun «exit» ni bosing",
+  "length_word_error":"so'z uzunligi 2 dan katta bo'lishi kerak",
 };

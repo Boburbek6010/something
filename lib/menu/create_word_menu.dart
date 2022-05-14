@@ -33,37 +33,42 @@ class CreateWordMenu extends Menu {
     font2_2("new_word_name".tr);
 
     String words = read();
-    String path = "";
+    if (words.length > 2) {
+      String path = "";
 
-    try{
-      path = await fileService.createFile(words);
-    } catch(error) {
-      writeln(error);
-      await createWord();
+      try {
+        path = await fileService.createFile(words);
+      } catch (error) {
+        writeln(error);
+        await createWord();
+      }
+
+      font2_2("write_word".tr);
+      String translate = "";
+      String stopWrite = stdin.readLineSync()!;
+      translate += (stopWrite);
+
+      List enList = [];
+      enList.add(words);
+      List uzList = [];
+      uzList.add(translate);
+
+      font2_2("write_description".tr);
+      String description = read();
+
+      font2_2("write_example".tr);
+      String example = read();
+      Content content = Content(description: description, example: example);
+
+      Word word = Word(word: words, translation: translate, content: content);
+      await fileService.writeFile(word, path);
+      font2("word_save".tr);
+      write("\n\n\n");
+      await Navigator.popUntil();
+    }else{
+      print("length_word_error".tr);
+      await Navigator.push(CreateWordMenu());
     }
-
-    font2_2("write_word".tr);
-    String translate = "";
-    String stopWrite = stdin.readLineSync()!;
-    translate += (stopWrite);
-
-    List enList = [];
-    enList.add(words);
-    List uzList = [];
-    uzList.add(translate);
-
-    font2_2("write_description".tr);
-    String description = read();
-
-    font2_2("write_example".tr);
-    String example = read();
-    Content content = Content(description: description, example: example);
-
-    Word word = Word(word: words, translation: translate, content: content);
-    await fileService.writeFile(word, path);
-    font2("word_save".tr);
-    write("\n\n\n");
-    await Navigator.popUntil();
   }
 
   @override
